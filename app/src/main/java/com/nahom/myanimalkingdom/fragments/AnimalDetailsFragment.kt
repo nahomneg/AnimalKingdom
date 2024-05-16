@@ -8,13 +8,16 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.nahom.myanimalkingdom.R
+import com.nahom.myanimalkingdom.dao.AnimalDao
 import com.nahom.myanimalkingdom.model.Animal
 import com.nahom.myanimalkingdom.repository.AnimalRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AnimalDetailsFragment(private val animalRepository: AnimalRepository) : Fragment() {
+class AnimalDetailsFragment(private val animalDao: AnimalDao) : Fragment() {
+
+    private val animalRepository = AnimalRepository(animalDao) // Initialize your repository here
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

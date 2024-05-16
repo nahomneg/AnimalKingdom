@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class AnimalViewModel(application: Application) : AndroidViewModel(application) {
     private val animalDao = AppDatabase.getDatabase(application).animalDao()
 
-    fun getAnimalsForSpecies(speciesId: Int): LiveData<List<Animal>> = animalDao.getAnimalsForSpecies(speciesId)
+    fun getAnimalsForSpecies(): LiveData<List<Animal>> = animalDao.getAnimalsForSpecies()
 
     fun addAnimal(animal: Animal) = viewModelScope.launch {
         animalDao.insert(animal)

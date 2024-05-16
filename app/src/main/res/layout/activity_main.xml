@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <!-- AppBar Layout with Toolbar -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:id="@+id/linearContainer">
+        <Button
+            android:id="@+id/btnAnimalDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animal Details"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    </com.google.android.material.appbar.AppBarLayout>
+        <Button
+            android:id="@+id/btnSpeciesDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Species Details"
+            android:layout_below="@id/btnAnimalDetails"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
+    </RelativeLayout>
 
-    <!-- NavHostFragment for navigation -->
-<!--    <fragment-->
-<!--        android:id="@+id/nav_host_fragment"-->
-<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:defaultNavHost="true"-->
-<!--        app:navGraph="@navigation/nav_graph" />-->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linearContainer"
+        android:layout_marginTop="20dp"/>
 
-<!--    &lt;!&ndash; Floating Action Button &ndash;&gt;-->
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom|end"-->
-<!--        android:layout_margin="16dp"-->
-<!--        android:contentDescription="@string/add_species"-->
-<!--        android:src="@drawable/ic_add_foreground"-->
-<!--        app:layout_anchor="@id/nav_host_fragment"-->
-<!--        app:layout_anchorGravity="bottom|end" />-->
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

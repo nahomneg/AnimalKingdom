@@ -1,45 +1,42 @@
 package com.nahom.myanimalkingdom
 
+
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import android.view.View.INVISIBLE
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.nahom.myanimalkingdom.ui.theme.MyAnimalKingdomTheme
+import androidx.fragment.app.Fragment
+import com.nahom.myanimalkingdom.db.AppDatabase
+import com.nahom.myanimalkingdom.fragments.AnimalDetailsFragment
+
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        val btnAnimalDetails = findViewById<Button>(R.id.btnAnimalDetails)
+        val btnSpeciesDetails = findViewById<Button>(R.id.btnSpeciesDetails)
+        val linearContainer = findViewById<RelativeLayout>(R.id.linearContainer)
+        linearContainer.visibility
+        btnAnimalDetails.setOnClickListener {
+            openFragment(AnimalDetailsFragment(AppDatabase.getDatabase(application).animalDao()), linearContainer)
+        }
 
-//        val navController = findNavController(R.id.nav_host_fragment)
-//        val appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-
-//        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-//            navController.navigate(R.id.action_speciesListFragment_to_addSpeciesFragment)
+//        btnSpeciesDetails.setOnClickListener {
+//            openFragment(SpeciesDetailsFragment())
 //        }
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-////        val navController = findNavController(R.id.nav_host_fragment)
-//        return navController.navigateUp() || super.onSupportNavigateUp()
-//    }
+    private fun openFragment(fragment: Fragment, container:RelativeLayout) {
+       container.visibility = INVISIBLE
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_container, fragment)
+            addToBackStack(null)
+            commit()
+        }
+    }
 }

@@ -8,8 +8,8 @@ import com.nahom.myanimalkingdom.model.Animal
 
 @Dao
 interface AnimalDao {
-    @Query("SELECT * FROM animal WHERE speciesId = :speciesId")
-    fun getAnimalsForSpecies(speciesId: Int): LiveData<List<Animal>>
+    @Query("SELECT * FROM animal")
+    fun getAnimalsForSpecies(): LiveData<List<Animal>>
 
     @Insert
     suspend fun insert(animal: Animal)
