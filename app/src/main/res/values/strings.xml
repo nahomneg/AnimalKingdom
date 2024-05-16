@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyAnimalKingdom</string>
+    <string name="add_species">Add Species</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_animal">Add Animal</string>
+</resources>
