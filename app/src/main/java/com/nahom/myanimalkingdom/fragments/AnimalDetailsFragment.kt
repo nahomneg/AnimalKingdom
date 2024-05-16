@@ -63,6 +63,7 @@ class AnimalDetailsFragment(private val animalDao: AnimalDao) : Fragment() {
     private fun addAnimalToDatabase(animal: Animal) {
         CoroutineScope(Dispatchers.IO).launch {
             animalRepository.insert(animal)
+
         }
     }
 }
